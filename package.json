@@ -1,0 +1,26 @@
+{
+  "name": "juego",
+  "version": "1.0.0",
+  "description": "Tarea tec",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "mocha test -w"
+  },
+  "keywords": [
+    "game",
+    "sockets"
+  ],
+  "author": "Jefry",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "bower": "^1.8.0",
+    "chai": "^4.1.1",
+    "chance": "^1.0.10",
+    "debug": "^2.6.8",
+    "express": "^4.15.3",
+    "lodash": "^4.17.4",
+    "mocha": "^3.5.0"
+  }
+}

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Guerra naval</title>
+  <link rel="stylesheet" href="/sweetalert/dist/sweetalert.css">
+	<style type="text/css">
+	  table {
+	  	border-style: solid;
+	  }
+
+	  table.source {
+	  	float: left;
+	  }
+
+	  table.target {
+	  	float: right;
+	  }
+	  
+	  th, td {
+	  	border-style: solid;
+	  	border-width: 1px;
+	  	height: 25px;
+	  	width: 25px;
+	  }
+
+	  .target .revealed.empty {
+      background-color: blue;
+    }
+
+    .target .fired.boat {
+      background-color: red;
+    }
+
+    .target .fired.empty {
+      background-color: blue;
+    }
+
+    .source .empty {
+      background-color: white;
+    }
+
+    .source .revealed.empty,
+    .source .fired.empty {
+      background-color: lightblue; 
+    }
+
+    .source .boat.fired {
+      background-color: red; 
+    }
+	  
+	  .source .boat {
+	  	background-color: gray;
+	  };
+
+    .source .fired.boat {
+      background-color: red; 
+    }
+
+	</style>
+</head>
+<body ng-app="app">
+
+  <div ng-controller="SeaBattleController as vm">
+    <h1>
+      {{vm.isMyTurn() ? 'Su turno' : 'Esperando que el oponente juege...'}}
+    </h1>
+    
+    <div>
+      <table class="source">
+
+        <thead>
+          <tr>
+          <th>*</th>
+          <th>A</th>
+          <th>B</th>
+          <th>C</th>
+          <th>D</th>
+          <th>E</th>
+          <th>F</th>
+          <th>G</th>
+          <th>H</th>
+          <th>I</th>
+          <th>J</th>
+          </tr>
+        </thead>
+        <tbody id="source">
+        <tr ng-repeat="row in vm.getMatrix().rows">
+          <th>{{$index + 1}}</th>
+          <td ng-repeat="point in row" ng-class="{'empty': point.empty, 'boat': point.boat, 'fired': point.fired, 'revealed': point.revealed}">
+            
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <table class="target">
+      <thead>
+        <tr>
+          <th>*</th>
+          <th>A</th>
+          <th>B</th>
+          <th>C</th>
+          <th>D</th>
+          <th>E</th>
+          <th>F</th>
+          <th>G</th>
+          <th>H</th>
+          <th>I</th>
+          <th>J</th>
+        </tr>
+      </thead>
+
+      <tbody id="target">
+        <tr ng-repeat="row in vm.getEnemyMatrix().rows">
+          <th>{{$index + 1}}</th>
+          <td ng-repeat="point in row" ng-click="vm.atack(point)" ng-disabled="vm.atacking || vm.isGameOver()"
+          ng-class="{'empty': point.empty, 'boat': point.boat, 'fired': point.fired, 'revealed': point.revealed}">            
+          </td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+
+    <h2 ng-if="vm.isGameOver()">
+      El juego ha terminado, El ganador es {{vm.getGanador()}}
+    </h2>
+  </div>  
+
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/angular/angular.min.js" type="text/javascript"></script>
+<script src="/sweetalert/dist/sweetalert.min.js" type="text/javascript"></script>
+<script src="/lodash/dist/lodash.min.js" type="text/javascript"></script>
+<script src="/js-url/url.min.js" type="text/javascript"></script>
+<script src="/app.js" type="text/javascript"></script>
+</body>
+</html>

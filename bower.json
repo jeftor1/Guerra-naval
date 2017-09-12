@@ -1,0 +1,29 @@
+{
+  "name": "juego",
+  "description": "Tarea tec",
+  "main": "index.js",
+  "authors": [
+    "Jefry"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "game",
+    "sockets"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "angular": "^1.6.5",
+    "lodash": "^4.17.4",
+    "js-url": "^2.5.0",
+    "sweetalert": "^1.1.3"
+  }
+}
