@@ -4,6 +4,7 @@ const Boat = require('../boat');
 const _ = require('lodash');
 
 const NUM_BOATS = 10;
+const NUM_LBOATS = 5;
 
 class Player {
   constructor() {
